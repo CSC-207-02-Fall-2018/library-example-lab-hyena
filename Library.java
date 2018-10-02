@@ -1,4 +1,4 @@
-package library;
+package libraryExample;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -117,9 +117,15 @@ public class Library {
 		lib.addBook(new CirculatingBook ("Henry M. Walker",
 			    "The Tao of Computing",
 			    "0-86720-206-8", "QA76.W1855"));
+		
+		
 	
 		// sort books by call number
 		lib.sortLibrary();
+		
+		lib.addBook(new ReferenceBook ("Weiss",
+			    "Java 4th Edition",
+			    "0-89569-236-2", "WG77.S7575", "Textbooks"));
 		
 		// print library
 		lib.printLibrary();
@@ -128,13 +134,14 @@ public class Library {
 		lib.checkout("Donald Duck", "March 1, 2012", "QA43.W34");
 		lib.checkout("Donald Duck", "March 12, 2012", "QA76.6.W3275");
 		lib.checkout("Donald Duck", "March 6, 2012", "64.2 R25ex");
-		lib.checkout("Minnie Mouse", "April 1, 2012", "64.2 25e");
 		lib.checkout("Goofy", "February 28, 2012", "12345"); // should fail
 
 		lib.returned("QA76.6.W3275");
 		lib.returned("64.2 R25ex");
 		
-		lib.checkout("Goofy", "March 28, 2012", "QA76.6.W3275");
+		/*exposes the lack of the error checking, program does not keep track of whether
+		 * the book has already been checked out */
+		lib.checkout("Donald Duck", "March 1, 2012", "QA43.W34");
 		
 		// print final status of library
 		lib.printLibrary();		
